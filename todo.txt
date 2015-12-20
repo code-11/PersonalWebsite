@@ -1,0 +1,12 @@
+Chloe:
+
+Make top white bar larger
+Perhaps switch gradient facing
+Make pictures on the project page less jarring
+
+
+
+Me:
+Mabye more color, less blah, more awww... yeah
+Perhaps box around each project
+Instead of going to a differnt page for each project, java script reveal it
