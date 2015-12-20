@@ -84,6 +84,17 @@ a:hover{
 	margin-right: 20px;
 	margin-top: 5px;
 }
+.corpimage{
+	max-width:200px;
+}
+
+.white{
+	color:white;
+}
+.blue{
+	color: #2ca6b8 ;
+}
+
 .snippettextbox{
 	/*position: relative;*/
 }
