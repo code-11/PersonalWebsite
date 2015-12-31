@@ -18,7 +18,7 @@
 			</p>
 			<br/>
 			<p>
-				I enjoy computer programming, playing video games, skiing, staying up-to-date with world politics, writing, science fiction and economics.
+				I enjoy computer programming, making and playing video games, skiing, staying up-to-date with world politics, writing, science fiction and economics.
 			</p>
 			<br/>
 			<br/>

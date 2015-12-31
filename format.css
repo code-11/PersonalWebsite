@@ -47,9 +47,13 @@ iframe{
 	margin:0;
 	display: inline-block;
 	float:left;
+	font-size:1.2vw;
+
 }
 .menuelement{
-	margin-right:120px;
+	font-size:1.2vw;
+	margin-right:12%;
+	/*margin-right:120px;*/
 	display: inline-block;
 	float:left;
 }
