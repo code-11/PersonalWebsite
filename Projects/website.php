@@ -26,6 +26,6 @@ This site allows me to record my progress on different projects in a way that ca
 Concerning the site itself, it is structured using a mix of static and dynamic pages.
 I used to use a snippet based templating system I made myself in php, but realized that most of it was unnessesary. Now it is almost all static html with some php includes for reuse.
 <br/><br/>
-Obviously the html of the page itself can be found by hitting Ctrl-U (on firefox and chrome, not sure about IE)./div>
+Obviously the html of the page itself can be found by hitting Ctrl-U (on firefox and chrome, not sure about IE).</div>
 </body>
 </html>
