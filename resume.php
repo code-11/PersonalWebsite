@@ -10,7 +10,7 @@
 </div> 
 	<div class="allcontent">
 		<div>
-			My resume can be found in <a href="Documents/Resume_12_31_15.pdf">pdf</a> form, or if you prefer, much of the same information is available through <a href="https://www.linkedin.com/pub/brendan-ritter/80/50/44b">Linked-In</a>.
+			My resume can be found in <a href="Documents/Resume_1_21_16.pdf">pdf</a> form, or if you prefer, some of the same information is available through <a href="https://www.linkedin.com/pub/brendan-ritter/80/50/44b">Linked-In</a>.
 			<br/>
 			<br/>
 			If you want to contact me, my email is my first name, a period, then my last name. It is a gmail account.
