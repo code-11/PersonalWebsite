@@ -12,7 +12,7 @@
 		<div class="snippetbox">
 			<img class="snippetimage corpimage" src="Pictures/bloomberg.jpg" />
 			<div class= "snippettextbox">
-				<p class="snippettext">I conducted a project with Bloomberg where I worked with a multidisciplinary team of six in order to productize and improve <span class="green">sarcasm detection</span>. We focused on iTunes app ratings and achieved an F1 score of 70%.<br/><br/> Work was done in <span class="blue">python</span> and <span class="blue">javascript</span>.</p> Our final product can be found live <a href="http://www.trueratr.com">here</a>.
+				<p class="snippettext">I conducted a project with Bloomberg where I worked with a multidisciplinary team of six in order to productize and improve <span class="green">sarcasm detection</span>. We focused on iTunes app ratings and achieved an F1 score of 70%.<br/><br/> Work was done in <span class="blue">python</span> and <span class="blue">javascript</span>.</p> Our final product can be found live <a href="http://www.trueratr.com">here</a>. The project even got an article in Ars Technica! Check it out <a href="http://arstechnica.com/information-technology/2016/01/snark-attack-cornell-students-teach-software-to-detect-sarcasm/">here</a>!
 			</div>
 		</div>
 
