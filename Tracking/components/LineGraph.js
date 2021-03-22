@@ -125,7 +125,10 @@ export default class LineGraph extends Component {
 	}
 
 	render(){
-		const {width,height,points} = this.props;
+		const {width,height,data} = this.props;
+		if (data==undefined){
+			return null;
+		}
 		const dataExtents= this.dataExtents();
 	    return <Stage width={width} height={height}>
 	      <Layer>
