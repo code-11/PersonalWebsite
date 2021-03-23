@@ -5,6 +5,7 @@ export default class LineGraph extends Component {
 	constructor(props){
 		super(props);
 		const {data}=this.props;
+		this.state={offsetX:0,offsetY:0}
 	}
 
 	transX(xMin,xMax,width,xVal){
@@ -23,7 +24,7 @@ export default class LineGraph extends Component {
 		const {data, width, height,axisThickness,axisLblSize} = this.props;
 
 		const xPos=this.transX(xMin,xMax,width,pt[0]);
-		const yPos=this.transY(xMin,xMax,height,pt[1]);
+		const yPos=this.transY(yMin,yMax,height,pt[1]);
 		return [xPos,yPos];
 	}
 
