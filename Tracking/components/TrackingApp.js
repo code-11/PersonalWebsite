@@ -33,9 +33,13 @@ export default class TrackingApp extends Component {
 	render() {
 		// const fakeData=[[1,1],[2,5],[3,6],[4,2],[5,7],[6,7],[7,7.5],[8,5],[9,2],[10,4]];
 		// const fakeData=[[2,1],[3,5],[5,6],[5.5,2],[6.5,7],[9,7],[10,10]];
+		if (this.state.rowData==undefined){
+			return null;
+		}
+		const {xMin,xMax,yMin,yMax} = LineGraph.dataExtents(this.state.rowData);
 		return  <div>
 			<h1> Test </h1>
-			<LineGraph width={500} height={500} axisThickness={2} axisLblSize={12} data={this.state.rowData}/>
+			<LineGraph width={500} height={500} top={yMax*2} bottom={0} left={0} right={xMax} axisThickness={2} axisLblSize={12} data={this.state.rowData}/>
 		</div>;
 
 	}

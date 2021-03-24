@@ -4,20 +4,29 @@ import {Stage, Layer, Line, Circle, Text} from 'react-konva';
 export default class LineGraph extends Component { 
 	constructor(props){
 		super(props);
-		const {data}=this.props;
-		this.state={offsetX:0,offsetY:0}
+	}
+
+	static dataExtents(data){
+		const xMax=data.map(pt=>pt[0]).reduce((mx,el)=>Math.max(el,mx));
+		const xMin=data.map(pt=>pt[0]).reduce((mx,el)=>Math.min(el,mx));
+		const yMax=data.map(pt=>pt[1]).reduce((mx,el)=>Math.max(el,mx));
+		const yMin=data.map(pt=>pt[1]).reduce((mx,el)=>Math.min(el,mx));
+
+		return {xMin,xMax,yMin,yMax};
 	}
 
 	transX(xMin,xMax,width,xVal){
+		const {right,left} = this.props;
 		const {axisThickness,axisLblSize} = this.props;
 		const bufferX = axisThickness + axisLblSize*3;
-		return (((width-bufferX) / xMax) * xVal) + bufferX;
+		return (((width-bufferX) / (right-left)) * xVal) + bufferX;
 	}
 
 	transY(yMin,yMax,height,yVal){
+		const {top,bottom} = this.props;
 		const {axisThickness,axisLblSize} = this.props;
 		const bufferY = axisThickness + axisLblSize
-		return height - bufferY - ((height-bufferY) / yMax) * yVal
+		return height - bufferY - ((height-bufferY) / top) * yVal
 	}
 
 	trans(xMin,xMax,yMin,yMax,pt){
@@ -26,17 +35,6 @@ export default class LineGraph extends Component {
 		const xPos=this.transX(xMin,xMax,width,pt[0]);
 		const yPos=this.transY(yMin,yMax,height,pt[1]);
 		return [xPos,yPos];
-	}
-
-	dataExtents(){
-		const {data} = this.props;
-
-		const xMax=data.map(pt=>pt[0]).reduce((mx,el)=>Math.max(el,mx));
-		const xMin=data.map(pt=>pt[0]).reduce((mx,el)=>Math.min(el,mx));
-		const yMax=data.map(pt=>pt[1]).reduce((mx,el)=>Math.max(el,mx));
-		const yMin=data.map(pt=>pt[1]).reduce((mx,el)=>Math.min(el,mx));
-
-		return {xMin,xMax,yMin,yMax};
 	}
 
 	getBaseLog(x, y) {
@@ -67,6 +65,7 @@ export default class LineGraph extends Component {
 
 	renderAxisLbls(dataExtents){
 		const{width, height, axisThickness, axisLblSize} = this.props;
+		const {right, left, bottom, top} = this.props;
 		const {xMin,xMax,yMin,yMax} = dataExtents;
 		const lbls=[];
 		const bufferY = axisThickness + axisLblSize-3;
@@ -74,8 +73,8 @@ export default class LineGraph extends Component {
 
 		//These numbers are in data domain
 		for(let i=0; i<=10; i+=1){
-			const xLblVal= ((xMax-0)/10)*i;
-			const pixelVal= this.transX(xMin,xMax,width,xLblVal);
+			const xLblVal= ((right-left)/10)*i+left;
+			const pixelVal= this.transX(xMin,xMax,width,xLblVal-left);
 			lbls.push(
 				<Text 
 					x={pixelVal}
@@ -89,7 +88,7 @@ export default class LineGraph extends Component {
 
 		//These numbers are in data domain
 		for(let j=0; j<=10; j+=1){
-			const yLblVal= ((yMax-0)/10)*j;
+			const yLblVal= ((yMax*2-0)/10)*j;
 			const pixelVal= this.transY(yMin,yMax,height,yLblVal);
 			lbls.push(
 				<Text 
@@ -130,7 +129,7 @@ export default class LineGraph extends Component {
 		if (data==undefined){
 			return null;
 		}
-		const dataExtents= this.dataExtents();
+		const dataExtents= LineGraph.dataExtents(data);
 	    return <Stage width={width} height={height}>
 	      <Layer>
 			{this.renderAxis()}
