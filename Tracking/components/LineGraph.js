@@ -19,14 +19,14 @@ export default class LineGraph extends Component {
 		const {right,left} = this.props;
 		const {axisThickness,axisLblSize} = this.props;
 		const bufferX = axisThickness + axisLblSize*3;
-		return (((width-bufferX) / (right-left)) * xVal) + bufferX;
+		return (((width-bufferX) / (right-left)) * (xVal-left)) + bufferX;
 	}
 
 	transY(yMin,yMax,height,yVal){
 		const {top,bottom} = this.props;
 		const {axisThickness,axisLblSize} = this.props;
 		const bufferY = axisThickness + axisLblSize
-		return height - bufferY - ((height-bufferY) / top) * yVal
+		return height - bufferY - ((height-bufferY) / (top-bottom)) * (yVal-bottom)
 	}
 
 	trans(xMin,xMax,yMin,yMax,pt){
@@ -74,7 +74,7 @@ export default class LineGraph extends Component {
 		//These numbers are in data domain
 		for(let i=0; i<=10; i+=1){
 			const xLblVal= ((right-left)/10)*i+left;
-			const pixelVal= this.transX(xMin,xMax,width,xLblVal-left);
+			const pixelVal= this.transX(xMin,xMax,width,xLblVal);
 			lbls.push(
 				<Text 
 					x={pixelVal}
@@ -88,7 +88,7 @@ export default class LineGraph extends Component {
 
 		//These numbers are in data domain
 		for(let j=0; j<=10; j+=1){
-			const yLblVal= ((yMax*2-0)/10)*j;
+			const yLblVal= ((top-bottom)/10)*j+bottom;
 			const pixelVal= this.transY(yMin,yMax,height,yLblVal);
 			lbls.push(
 				<Text 
