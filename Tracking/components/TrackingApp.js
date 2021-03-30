@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LineGraph from "./LineGraph";
 import GDriveUtil from "./GDriveUtil";
+import GDFitnessUtil from "./GDFitnessUtil";
 import { NUMBER, DATE, STRING } from "./GDriveUtil";
 
 export default class TrackingApp extends Component {
@@ -16,18 +17,21 @@ export default class TrackingApp extends Component {
 		const apiKey="AIzaSyBnOsVQzm27ZRMqj4VeXFkY9xQXkiMCj2k";
 		const sheetId="1AoU80nFKZFuBzVLltEeh71Fv-nZ-VsD_U6uiVV8nEmA";
 		const sheetId2="1izcwWB3PNCLeLKGlU_zNjbRDB3imwRY6QambMXhfRlk";
+		const fitnessSheet="1pdltxuNmGmryZHViMgkq98u0TYhbuo2jlAiCsCSYlpo";
 
-		// fetch("https://sheets.googleapis.com/v4/spreadsheets/"+sheetId2+"/?key="+apiKey+"&includeGridData=true",{redirect:"follow"})
-		//   .then(response => response.json())
-		//   .then(data => console.log(data));
-		const gd=new GDriveUtil(sheetId2,apiKey);
-		const columnTypes=[
-			DATE,
-			NUMBER,
-		]
-		gd.getData(columnTypes).then(rowData=>{
+		// const gd=new GDriveUtil(sheetId2,apiKey);
+		// const columnTypes=[
+		// 	DATE,
+		// 	NUMBER,
+		// ]
+		// gd.getData(columnTypes).then(rowData=>{
+		// 	this.setState({rowData});
+		// });
+
+		const gd=new GDFitnessUtil(fitnessSheet, apiKey);
+		gd.getData().then(rowData=>{
 			this.setState({rowData});
-		});
+		})
 	}
 
 	render() {

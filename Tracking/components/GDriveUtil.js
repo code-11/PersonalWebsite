@@ -1,6 +1,7 @@
 export const NUMBER =1;
 export const DATE =2;
 export const STRING =3;
+export const CUSTOM =4;
 
 export default class GDriveUtil {
 	constructor(sheetId, apiKey){
@@ -12,7 +13,7 @@ export default class GDriveUtil {
 		if(type===NUMBER){
 			return elObj.effectiveValue.numberValue;
 		}else if (type===STRING){
-			return elObj.formattedvalue;
+			return elObj.formattedValue;
 		}else if (type===DATE){
 			return elObj.effectiveValue.numberValue-43918;
 		}
