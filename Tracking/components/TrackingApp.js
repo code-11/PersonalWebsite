@@ -44,7 +44,7 @@ export default class TrackingApp extends Component {
 		const {xMin,xMax,yMin,yMax} = LineGraph.dataExtents(rowData);
 		return  <div>
 			<h1> Test </h1>
-			<LineGraph width={500} height={500} top={yMax+10} bottom={yMin-10} left={xMin} right={xMax} axisThickness={2} axisLblSize={12} data={rowData}/>
+			<LineGraph width={500} height={500} top={6} bottom={0} left={xMin} right={xMax} axisThickness={2} axisLblSize={12} data={rowData}/>
 		</div>;
 
 	}
