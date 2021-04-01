@@ -65,14 +65,22 @@ export default class GDfitnessUtil {
 		  .then(data => {
 		  	const transRows={};
 		  	const rowObjs=data.sheets[0].data[0].rowData;
+		  	let minDate=10000000;
+		  	let maxDate=0;
 		  	rowObjs.forEach((row,i) => {
 		  		const point=this.readRow(row);
 		  		transRows[point[0]]=point;
+		  		if (point[0]>maxDate){
+		  			maxDate=point[0]
+		  		}
+		  		if (point[0]<minDate){
+		  			minDate=point[0];
+		  		}
 		  	});
 
 		  	const avgRows=[];
 		  	const avgWindow=7;
-		  	for(let j=-15+avgWindow; j<367; j+=1){
+		  	for(let j=minDate+avgWindow; j<maxDate; j+=1){
 		  		const avg=[];
 		  		for(let k=avgWindow-1; k>=0; k-=1){
 		  			let val=transRows[j-k];

@@ -72,31 +72,33 @@ export default class LineGraph extends Component {
 		const bufferX = axisThickness + axisLblSize*3;
 
 		//These numbers are in data domain
-		for(let i=0; i<=10; i+=1){
-			const xLblVal= ((right-left)/10)*i+left;
+		const numXLabels=9;
+		for(let i=0; i<=numXLabels; i+=1){
+			const xLblVal= Math.round(((right-left)/numXLabels)*i+left);
 			const pixelVal= this.transX(xMin,xMax,width,xLblVal);
 			lbls.push(
 				<Text 
 					x={pixelVal}
 					y={height-bufferY}
-					key={"x"+xLblVal}
+					key={"x"+i}
 					fontSize={axisLblSize}
-					text={""+Number.parseFloat(xLblVal).toFixed(2)}
+					text={""+Number.parseFloat(xLblVal).toFixed(0)}
 				/>
 			);
 		}
 
 		//These numbers are in data domain
-		for(let j=0; j<=10; j+=1){
-			const yLblVal= ((top-bottom)/10)*j+bottom;
+		const numYLabels=9;
+		for(let j=0; j<=numYLabels; j+=1){
+			const yLblVal= Math.round(((top-bottom)/numYLabels)*j+bottom);
 			const pixelVal= this.transY(yMin,yMax,height,yLblVal);
 			lbls.push(
 				<Text 
 					x={0}
 					y={pixelVal-bufferY}
-					key={"y"+yLblVal}
+					key={"y"+j}
 					fontSize={axisLblSize}
-					text={""+Number.parseFloat(yLblVal).toFixed(2)}
+					text={""+Number.parseFloat(yLblVal).toFixed(0)}
 				/>
 			);
 		}
